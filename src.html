@@ -4,18 +4,19 @@
         [m, n] = ",@";
 
         r = (n, c = m) => c.repeat(n);
-        L = k = [];
+
         H = 5;
-        V = S = F = 0;
+        V = S = F = L = 0;
         Q = 0.08;
+        k = [];
 
         with (Math)
             setInterval(
                 (_) =>
                     (a.innerHTML =
-                        (((!/@/.test(L + "") &&
+                        (((!/@/.test(L) &&
                             (++V,
-                            (L = [...r((M = (sqrt(V) * 3 - 1) | 0))].map(
+                            (L = [...r((M = (V ** 0.5 * 3 - 1) | 0))].map(
                                 (_) => [...r(10, n)],
                             )),
                             (Q += 0.02))) ||
@@ -26,8 +27,7 @@
                             (X = random() * 0.2 - 0.1),
                             (T = 70),
                             (p = 19)),
-                        F++ % 3 ||
-                            (p = min(p + (k.R | k.d) - (k.L | k.a) || 1, 37)),
+                        F++ % 3 || (p = min(p - !k[1] + !k[0] || 1, 37)),
                         T ? T-- : H && ((x += X), (y += Y)),
                         y > 11.5 + M &&
                             (d = (x - p) / 3 - 0.5) * d < 1 &&
@@ -64,6 +64,19 @@
                         w.map((x) => x.join``).join`\n`)),
                 10,
             );
-        e = (e) => (k[e.key[5] || e.key] = !!e.type[6]);
+        e = (e) => (k[+/d|i/.test(e.key)] = !!e.type[6]);
+
+        ["start", "end", "move"].map((e) =>
+            addEventListener(
+                "touch" + e,
+                (e) =>
+                    e.preventDefault(
+                        ((k = [])[
+                            ((e.touches[0]?.pageX * 2) / innerWidth + 2) ^ 2
+                        ] = 1),
+                    ),
+                { passive: false },
+            ),
+        );
     </script>
 </body>
