@@ -1,6 +1,6 @@
 #!/bin/sh
 
-minify src.html | sed -E "
+minify src.html | sed -zE "
 s/\"/'/g
 
 # inline JS into onload

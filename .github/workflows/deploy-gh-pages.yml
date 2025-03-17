@@ -23,6 +23,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Install minify
+        run: sudo apt-get -y install minify
       - name: Make index.html file
         run: ./make.sh
       - name: Upload artifact
