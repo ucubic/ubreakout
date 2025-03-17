@@ -26,7 +26,8 @@
                             (X = random() * 0.2 - 0.1),
                             (T = 70),
                             (p = 19)),
-                        F++ % 3 || (p = min(p + !k.L - !k.R || 1, 37)),
+                        F++ % 3 ||
+                            (p = min(p + (k.R | k.d) - (k.L | k.a) || 1, 37)),
                         T ? T-- : H && ((x += X), (y += Y)),
                         y > 11.5 + M &&
                             (d = (x - p) / 3 - 0.5) * d < 1 &&
@@ -63,6 +64,6 @@
                         w.map((x) => x.join``).join`\n`)),
                 10,
             );
-        e = (e) => (k[e.key[5]] = e.type[6]);
+        e = (e) => (k[e.key[5] || e.key] = !!e.type[6]);
     </script>
 </body>
