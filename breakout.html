@@ -1,0 +1,68 @@
+<body onkeydown="e(event)" onkeyup="e(event)" autofocus>
+    <font size="6"><pre id="a"></pre></font>
+    <script>
+        [m, n] = ",@";
+
+        r = (n, c = m) => c.repeat(n);
+        L = k = [];
+        H = 5;
+        V = S = F = 0;
+        Q = 0.08;
+
+        with (Math)
+            setInterval(
+                (_) =>
+                    (a.innerHTML =
+                        (((!/@/.test(L + "") &&
+                            (++V,
+                            (L = [...r((M = (sqrt(V) * 3 - 1) | 0))].map(
+                                (_) => [...r(10, n)],
+                            )),
+                            (Q += 0.02))) ||
+                            (H && y > 13 + M && H--)) &&
+                            ((x = 20),
+                            (y = 10 + M),
+                            (Y = Q),
+                            (X = random() * 0.2 - 0.1),
+                            (T = 70),
+                            (p = 19)),
+                        F++ % 3 || (p = min(p + !k.L - !k.R || 1, 37)),
+                        T ? T-- : H && ((x += X), (y += Y)),
+                        y > 11.5 + M &&
+                            (d = (x - p) / 3 - 0.5) * d < 1 &&
+                            ((Y = -Q), (X = d * Q)),
+                        (w = [
+                            r(41, "="),
+                            m,
+                            m,
+                            m,
+                            ...L.map(
+                                (y, j) =>
+                                    r(j & 2) + y.map((b) => r(3, +b ? m : n)),
+                            ),
+                            ...r(8),
+                            r(p - 1) + r(5, "#"),
+                            m,
+                            m,
+                            "LVL " + V + (r(H, " ♥") || " game over"),
+                            "SCORE " + S,
+                            "made with ♥ by ucubic",
+                        ].map((x) => [...x.padEnd(41, m)])),
+                        (y < 2) |
+                            ((h =
+                                w[(B = (y + sign(Y) * 0.1) | 0)][(C = x | 0)]) >
+                                m) && (Y = -Y),
+                        h == n ||
+                            ((h =
+                                w[(B = y | 0)][(C = (x + sign(X) * 0.1) | 0)] ||
+                                "~") > m &&
+                                (X = -X)),
+                        h == n &&
+                            ((L[B - 4][(C - (B & 2)) >> 2] = 1), (S += V * 50)),
+                        H && (w[y | 0][x | 0] = "*"),
+                        w.map((x) => x.join``).join`\n`)),
+                10,
+            );
+        e = (e) => (k[e.key[5]] = e.type[6]);
+    </script>
+</body>
