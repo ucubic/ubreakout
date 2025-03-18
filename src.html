@@ -6,11 +6,10 @@
         r = (n, c = m) => c.repeat(n);
 
         H = 5;
-        V = S = F = L = 0;
+        V = S = L = 0;
         Q = 0.08;
-        k = [];
 
-        with (Math)
+        with ((k = Math))
             setInterval(
                 (_) =>
                     (a.innerHTML =
@@ -21,19 +20,19 @@
                             )),
                             (Q += 0.02))) ||
                             (H && y > 13 + M && H--)) &&
-                            ((x = 20),
-                            (y = 10 + M),
+                            ((x = 21),
+                            (y = 9 + M),
                             (Y = Q),
-                            (X = random() * 0.2 - 0.1),
+                            (X = 0.03),
                             (T = 70),
                             (p = 19)),
-                        F++ % 3 || (p = min(p - !k[1] + !k[0] || 1, 37)),
+                        (p = min(max(p - (!k[1] - !k[0]) / 3, 1), 37)),
                         T ? T-- : H && ((x += X), (y += Y)),
                         y > 11.5 + M &&
-                            (d = (x - p) / 3 - 0.5) * d < 1 &&
+                            (d = (x - p) / 3 - 0.85) * d < 1 &&
                             ((Y = -Q), (X = d * Q)),
                         (w = [
-                            r(41, "="),
+                            r(41, "-"),
                             m,
                             m,
                             m,
@@ -42,20 +41,19 @@
                                     r(j & 2) + y.map((b) => r(3, +b ? m : n)),
                             ),
                             ...r(8),
-                            r(p - 1) + r(5, "#"),
+                            r(p - 1) + r(5, "="),
                             m,
                             m,
                             "LVL " + V + (r(H, " ♥") || " game over"),
                             "SCORE " + S,
                             "made with ♥ by ucubic",
-                        ].map((x) => [...x.padEnd(41, m)])),
+                        ].map((x) => ["|", ...x.padEnd(41, m)])),
                         (y < 2) |
-                            ((h =
-                                w[(B = (y + sign(Y) * 0.1) | 0)][(C = x | 0)]) >
+                            ((h = w[(B = (y + sign(Y) / 9) | 0)][(C = x | 0)]) >
                                 m) && (Y = -Y),
                         h == n ||
                             ((h =
-                                w[(B = y | 0)][(C = (x + sign(X) * 0.1) | 0)] ||
+                                w[(B = y | 0)][(C = (x + sign(X) / 9) | 0)] ||
                                 "~") > m &&
                                 (X = -X)),
                         h == n &&
@@ -71,11 +69,11 @@
                 "touch" + e,
                 (e) =>
                     e.preventDefault(
-                        ((k = [])[
+                        ((k = e)[
                             ((e.touches[0]?.pageX * 2) / innerWidth + 2) ^ 2
                         ] = 1),
                     ),
-                { passive: false },
+                { passive: 0 },
             ),
         );
     </script>
